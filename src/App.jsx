@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { LanguageProvider } from "./context/LanguageContext";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/Home";
@@ -9,18 +10,20 @@ import Galerie from "./pages/Galerie";
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/hotels" element={<Hotels />} />
-          <Route path="/restaurants" element={<Restaurants />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/galerie" element={<Galerie />} />
-        </Routes>
-      </main>
-      <Footer />
-    </BrowserRouter>
+    <LanguageProvider>
+      <BrowserRouter>
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/hotels" element={<Hotels />} />
+            <Route path="/restaurants" element={<Restaurants />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/galerie" element={<Galerie />} />
+          </Routes>
+        </main>
+        <Footer />
+      </BrowserRouter>
+    </LanguageProvider>
   );
 }

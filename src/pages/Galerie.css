@@ -1,0 +1,253 @@
+/* ==========================================================================
+   Galerie — Page
+   ========================================================================== */
+
+.galerie-page {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 6rem 2rem 8rem;
+  color: #1a1a1a;
+}
+
+.galerie-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 4rem;
+}
+
+.galerie-header .eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #b08d57;
+  margin-bottom: 1rem;
+}
+
+.galerie-header h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+/* ==========================================================================
+   Grille — toutes les images sont des carrés identiques
+   ========================================================================== */
+
+.galerie-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+.galerie-card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: #f2f2f2;
+  isolation: isolate;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+}
+
+.galerie-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0) 45%
+  );
+  opacity: 0;
+  transition: opacity 0.35s ease;
+  z-index: 1;
+}
+
+.galerie-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.galerie-card:hover img {
+  transform: scale(1.08);
+}
+
+.galerie-card:hover::after {
+  opacity: 1;
+}
+
+.galerie-card:focus-visible {
+  outline: 2px solid #b08d57;
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   Lightbox / Modal
+   ========================================================================== */
+
+.galerie-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 10, 10, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  padding: 2rem;
+  animation: galerie-fade-in 0.25s ease;
+}
+
+@keyframes galerie-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.galerie-modal-shell {
+  position: relative;
+  width: min(100%, 1400px);
+  max-height: 92vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: galerie-scale-in 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes galerie-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.galerie-modal-shell img {
+  max-width: 100%;
+  max-height: 92vh;
+  width: auto;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* Bouton fermer */
+.galerie-close {
+  position: absolute;
+  top: -4rem;
+  right: -0.35rem;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 1.8rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+}
+
+.galerie-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+/* Boutons navigation */
+.galerie-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3.3rem;
+  height: 3.3rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.25s ease, transform 0.25s ease;
+  z-index: 2;
+}
+
+.galerie-nav:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.galerie-nav-prev {
+  left: -2rem;
+}
+
+.galerie-nav-prev:hover {
+  transform: translateY(-50%) translateX(-3px);
+}
+
+.galerie-nav-next {
+  right: -2rem;
+}
+
+.galerie-nav-next:hover {
+  transform: translateY(-50%) translateX(3px);
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .galerie-bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .galerie-page {
+    padding: 4rem 1.25rem 5rem;
+  }
+
+  .galerie-bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+
+  .galerie-modal {
+    padding: 1rem;
+  }
+
+  .galerie-close {
+    top: -2.75rem;
+    right: 0;
+  }
+
+  .galerie-nav-prev {
+    left: 0.25rem;
+  }
+
+  .galerie-nav-next {
+    right: 0.25rem;
+  }
+}

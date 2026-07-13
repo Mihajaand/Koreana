@@ -1,10 +1,35 @@
 .hero {
-  padding: 6rem 0 5rem;
+  position: relative;
+  min-height: 78vh;
+  display: grid;
+  align-items: center;
+  overflow: hidden;
   border-bottom: 1px solid var(--line);
+  background: #121712;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(14, 19, 16, 0.90) 0%, rgba(14, 19, 16, 0.54) 50%, rgba(14, 19, 16, 0.75) 100%),
+    url("../assets/hommies.png") center center / cover no-repeat;
 }
 
 .hero-inner {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 3rem;
+}
+
+.hero-copy {
   max-width: 720px;
+  color: #f8f5ee;
 }
 
 .hero h1 {
@@ -16,7 +41,8 @@
   font-size: 1.05rem;
   line-height: 1.6;
   max-width: 52ch;
-  opacity: 0.85;
+  opacity: 0.9;
+  color: #f8f5ee;
 }
 
 .hero-actions {
@@ -24,4 +50,34 @@
   gap: 1rem;
   margin-top: 2.2rem;
   flex-wrap: wrap;
+}
+
+.hero-actions .btn-ghost {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.hero-actions .btn-ghost:hover {
+  background: #ffffff;
+  color: #111711;
+}
+
+.hero-media {
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.hero-media img {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    min-height: 68vh;
+  }
+
+  .hero-inner {
+    grid-template-columns: 1fr;
+  }
 }

@@ -1,19 +1,47 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { hotel } from "../data/hotelData";
+import { useLanguage } from "../context/LanguageContext";
 import logo from "../assets/logo.png";
 import "./Navbar.css";
 
 const links = [
-  { to: "/", label: "Accueil" },
-  { to: "/hotels", label: "Hotels" },
-  { to: "/restaurants", label: "Restaurants" },
-  { to: "/contact", label: "Contact" },
-  { to: "/galerie", label: "Galerie" },
+  { to: "/", key: "home" },
+  { to: "/hotels", key: "hotels" },
+  { to: "/restaurants", key: "restaurants" },
+  { to: "/contact", key: "contact" },
+  { to: "/galerie", key: "galerie" },
+];
+
+const languageOptions = [
+  { code: "fr", label: "FR" },
+  { code: "en", label: "EN" },
+  { code: "ko", label: "KR" },
 ];
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
+  const langRef = useRef(null);
+
+  const currentLang =
+    languageOptions.find((opt) => opt.code === language) || languageOptions[0];
+
+  useEffect(() => {
+    function handleClickOutside(e) {
+      if (langRef.current && !langRef.current.contains(e.target)) {
+        setLangOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleSelectLanguage = (code) => {
+    setLanguage(code);
+    setLangOpen(false);
+  };
 
   return (
     <header className="nav">
@@ -25,7 +53,7 @@ export default function Navbar() {
 
         <button
           className="nav-toggle"
-          aria-label="Ouvrir le menu"
+          aria-label={t.navMenuToggle}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
         >
@@ -43,9 +71,38 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
               end={l.to === "/"}
             >
-              {l.label}
+              {t[l.key]}
             </NavLink>
           ))}
+
+          <div className="nav-language-switcher" ref={langRef}>
+            <button
+              type="button"
+              className="nav-language-trigger"
+              aria-haspopup="true"
+              aria-expanded={langOpen}
+              aria-label={t.navLanguageSwitcher}
+              onClick={() => setLangOpen((v) => !v)}
+            >
+              {currentLang.label}
+              <span className={`nav-language-arrow ${langOpen ? "is-open" : ""}`} />
+            </button>
+
+            <ul className={`nav-language-menu ${langOpen ? "is-open" : ""}`}>
+              {languageOptions.map((option) => (
+                <li key={option.code}>
+                  <button
+                    type="button"
+                    className={language === option.code ? "is-active" : ""}
+                    onClick={() => handleSelectLanguage(option.code)}
+                  >
+                    {option.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           <a href={hotel.phoneHref} className="nav-call">
             {hotel.phone}
           </a>

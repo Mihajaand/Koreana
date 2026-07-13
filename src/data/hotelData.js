@@ -1,5 +1,7 @@
 // Données de l'hôtel — centralisées ici pour être faciles à modifier
 // (extraites du document hotel_chambre.docx)
+import cbreStd from "../assets/cbre-std.png";
+import cbreFamille from "../assets/cbre-famille.png";
 
 export const hotel = {
   name: "Koreana",
@@ -13,14 +15,14 @@ export const hotel = {
 };
 
 export const services = [
-  { id: "wifi", label: "Wifi" },
-  { id: "clim", label: "Climatiseur" },
-  { id: "tv", label: "TV" },
-  { id: "blanchisserie", label: "Blanchisserie" },
-  { id: "coffre", label: "Coffre" },
-  { id: "parking", label: "Parking discret & sécurisé" },
-  { id: "eauchaude", label: "Eau chaude" },
-  { id: "restaurant", label: "Restaurant" },
+  { id: "wifi", translationKey: "serviceWifi" },
+  { id: "clim", translationKey: "serviceClim" },
+  { id: "tv", translationKey: "serviceTv" },
+  { id: "blanchisserie", translationKey: "serviceLaundry" },
+  { id: "coffre", translationKey: "serviceSafe" },
+  { id: "parking", translationKey: "serviceParking" },
+  { id: "eauchaude", translationKey: "serviceHotWater" },
+  { id: "restaurant", translationKey: "serviceRestaurant" },
 ];
 
 // Catégories de chambres avec leurs tarifs (en Ariary)
@@ -28,6 +30,7 @@ export const roomCategories = [
   {
     id: "standard",
     name: "Standard",
+    img: cbreStd,
     rooms: 9,
     tagline: "L'essentiel, confortable et bien pensé",
     description:
@@ -41,6 +44,7 @@ export const roomCategories = [
   {
     id: "appartement",
     name: "Appartement",
+    img: cbreFamille,
     rooms: 8,
     tagline: "Plus d'espace pour plus de liberté",
     description:

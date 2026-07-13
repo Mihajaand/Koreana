@@ -20,6 +20,141 @@
   gap: 1.5rem;
 }
 
+.restaurant-home {
+  padding-top: 0;
+}
+
+.restaurant-home-header {
+  max-width: 70ch;
+}
+
+.restaurant-home-header h2 {
+  margin-bottom: 0.8rem;
+}
+
+.restaurant-home-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 2rem;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--bg-soft);
+}
+
+.restaurant-home-card {
+  flex: 1 1 220px;
+}
+
+.restaurant-home-card h3 {
+  font-size: 1rem;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+  margin-bottom: 0.6rem;
+}
+
+.restaurant-home-card a:hover {
+  color: var(--gold);
+}
+
+.restaurant-home-showcase {
+  margin-top: 2rem;
+}
+
+.restaurant-home-showcase-header {
+  margin-bottom: 1rem;
+}
+
+.restaurant-home-showcase-header h3 {
+  margin-top: 0.4rem;
+  font-size: 1.4rem;
+}
+
+.restaurant-home-carousel-shell {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.restaurant-home-carousel-control {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg-soft);
+  color: var(--ink);
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.restaurant-home-carousel {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(200px, 18vw);
+  gap: 0.9rem;
+  overflow-x: auto;
+  padding: 0.35rem 0 0.85rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+}
+
+.restaurant-home-carousel::-webkit-scrollbar {
+  height: 9px;
+}
+
+.restaurant-home-carousel::-webkit-scrollbar-thumb {
+  background: rgba(33, 40, 31, 0.25);
+  border-radius: 999px;
+}
+
+.restaurant-home-menu-card {
+  min-width: 0;
+  border: 1px solid rgba(33, 40, 31, 0.12);
+  background: #f8f5ee;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0;
+  aspect-ratio: 4 / 5;
+  scroll-snap-align: start;
+}
+
+.restaurant-home-menu-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.restaurant-home-map-card {
+  margin-top: 2rem;
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+  overflow: hidden;
+}
+
+.restaurant-home-map-head {
+  padding: 1.2rem 1.5rem 0.8rem;
+}
+
+.restaurant-home-map-head h3 {
+  margin: 0.4rem 0 0;
+  font-size: 1.4rem;
+}
+
+.restaurant-home-map-card iframe {
+  width: 100%;
+  height: 320px;
+  border: 0;
+  display: block;
+}
+
+.restaurant-home-actions {
+  margin-top: 2rem;
+}
+
 .callout {
   border-top: 1px solid var(--line);
   display: flex;

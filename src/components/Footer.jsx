@@ -1,9 +1,11 @@
 import { hotel } from "../data/hotelData";
-import {  } from "react-icons/fa";
+import { useLanguage } from "../context/LanguageContext";
 import "./Footer.css";
 import { FaFacebookF } from "react-icons/fa6";
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   return (
     <footer className="footer">
       <div className="container footer-inner">
@@ -14,18 +16,12 @@ export default function Footer() {
         <div className="footer-contact">
           <a href={hotel.phoneHref}>{hotel.phone}</a>
           <a href={`mailto:${hotel.email}`}>{hotel.email}</a>
-          <a
-    href={hotel.facebook}
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Facebook"
-    className="footer-social"
-  >
-    <FaFacebookF />
-  </a>
+          <a href={hotel.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="footer-social">
+            <FaFacebookF />
+          </a>
         </div>
         <p className="footer-note">
-          © {new Date().getFullYear()} {hotel.name}. Tous droits réservés.
+          © {new Date().getFullYear()} {hotel.name}. {t.footerRights}
         </p>
       </div>
     </footer>

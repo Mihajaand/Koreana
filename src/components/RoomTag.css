@@ -5,6 +5,10 @@
   border-radius: 4px;
   padding: 2.2rem 2rem 2rem;
   flex: 1 1 320px;
+
+  display: flex;
+  gap: 1.8rem;
+  align-items: stretch;
 }
 
 .room-tag-hole {
@@ -17,6 +21,28 @@
   border: 1px dashed var(--ink);
   border-radius: 50%;
   transform: translateY(-50%);
+}
+
+.room-tag-media {
+  flex: 0 0 260px;
+  width: 260px;
+  aspect-ratio: 4 / 3;
+  border-radius: 3px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  background: rgba(33, 40, 31, 0.04);
+}
+
+.room-tag-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.room-tag-body {
+  flex: 1 1 auto;
+  min-width: 0;
 }
 
 .room-tag-head {
@@ -78,4 +104,17 @@
   margin: 0;
   font-weight: 500;
   white-space: nowrap;
+}
+
+/* Empile l'image au-dessus du contenu sur mobile */
+@media (max-width: 720px) {
+  .room-tag {
+    flex-direction: column;
+  }
+
+  .room-tag-media {
+    flex: none;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
 }

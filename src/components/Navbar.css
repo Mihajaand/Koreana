@@ -65,6 +65,99 @@
   color: var(--gold);
 }
 
+/* --- Sélecteur de langue en bouton avec sous-menu --- */
+.nav-language-switcher {
+  position: relative;
+}
+
+.nav-language-trigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--line);
+  background: var(--bg-soft);
+  color: var(--ink);
+  padding: 0.5rem 0.9rem;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-language-trigger:hover {
+  background: var(--panel);
+  color: var(--panel-ink);
+}
+
+.nav-language-arrow {
+  width: 6px;
+  height: 6px;
+  border-right: 1px solid currentColor;
+  border-bottom: 1px solid currentColor;
+  transform: rotate(45deg);
+  transition: transform 0.2s ease;
+}
+
+.nav-language-arrow.is-open {
+  transform: rotate(-135deg);
+}
+
+.nav-language-menu {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  min-width: 100%;
+  list-style: none;
+  margin: 0;
+  padding: 0.3rem;
+  background: var(--bg-soft);
+  border: 1px solid var(--line);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s ease;
+  z-index: 60;
+}
+
+.nav-language-menu.is-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.nav-language-menu li + li {
+  margin-top: 0.2rem;
+}
+
+.nav-language-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.nav-language-menu button:hover {
+  background: var(--panel);
+  color: var(--panel-ink);
+}
+
+.nav-language-menu button.is-active {
+  background: var(--gold);
+  color: var(--panel-ink);
+}
+
+/* --- Bouton d'appel --- */
 .nav-call {
   background: var(--panel);
   color: var(--panel-ink);
@@ -112,6 +205,30 @@
 
   .nav-links.is-open {
     display: flex;
+  }
+
+  .nav-language-switcher {
+    width: 100%;
+  }
+
+  .nav-language-trigger {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .nav-language-menu {
+    position: static;
+    box-shadow: none;
+    margin-top: 0.4rem;
+    width: 100%;
+    display: none;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+
+  .nav-language-menu.is-open {
+    display: block;
   }
 
   .nav-call {
