@@ -1,0 +1,38 @@
+.chambres-page h1 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  margin: 0.6rem 0 1.2rem;
+}
+
+.room-tags-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.8rem;
+  margin-top: 1rem;
+}
+
+.room-tags-column .room-tag {
+  max-width: none;
+}
+
+.chambres-services {
+  margin-top: 4rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.chambres-services ul {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1rem;
+}
+
+.chambres-services li {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}

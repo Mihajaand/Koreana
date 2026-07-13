@@ -1,0 +1,27 @@
+.hero {
+  padding: 6rem 0 5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.hero-inner {
+  max-width: 720px;
+}
+
+.hero h1 {
+  font-size: clamp(2.6rem, 6vw, 4.4rem);
+  margin: 0.6rem 0 1.6rem;
+}
+
+.hero-text {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  max-width: 52ch;
+  opacity: 0.85;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2.2rem;
+  flex-wrap: wrap;
+}
