@@ -2,6 +2,7 @@ import { hotel } from "../data/hotelData";
 import { useLanguage } from "../context/LanguageContext";
 import "./Footer.css";
 import { FaFacebookF } from "react-icons/fa6";
+import logo from "../assets/logo.png";
 
 export default function Footer() {
   const { t } = useLanguage();
@@ -9,9 +10,12 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="container footer-inner">
-        <div>
-          <h3>{hotel.name}</h3>
-          <p>{hotel.address}</p>
+        <div className="footer-brand">
+          <img src={logo} alt={`Logo ${hotel.name}`} className="footer-logo" />
+          <div>
+            <h3>{hotel.name}</h3>
+            <p>{hotel.address}</p>
+          </div>
         </div>
         <div className="footer-contact">
           <a href={hotel.phoneHref}>{hotel.phone}</a>
