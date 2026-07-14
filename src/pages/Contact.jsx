@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { useLocation } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 import { hotel } from "../data/hotelData";
 import { useLanguage } from "../context/LanguageContext";
@@ -7,6 +8,11 @@ import "./Contact.css";
 export default function Contact() {
   const form = useRef();
   const { t } = useLanguage();
+  const location = useLocation();
+  const prefillRoomTitle = location?.state?.roomTitle || "";
+  const prefillMessage = prefillRoomTitle
+    ? t.bookContactMessageTemplate.replace("{room}", prefillRoomTitle)
+    : "";
 
   const sendEmail = (e) => {
     e.preventDefault();
@@ -73,7 +79,14 @@ export default function Contact() {
 
           <div className="form-group">
             <label htmlFor="message">{t.contactMessage}</label>
-            <textarea id="message" name="message" rows="6" placeholder={t.contactMessagePlaceholder} required />
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              placeholder={t.contactMessagePlaceholder}
+              defaultValue={prefillMessage}
+              required
+            />
           </div>
 
           <button type="submit" className="btn">

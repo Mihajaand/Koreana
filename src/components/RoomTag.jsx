@@ -1,9 +1,11 @@
 import { formatAr } from "../data/hotelData";
 import { useLanguage } from "../context/LanguageContext";
+import { useNavigate } from "react-router-dom";
 import "./RoomTag.css";
 
 export default function RoomTag({ room }) {
   const { t } = useLanguage();
+  const navigate = useNavigate();
 
   const roomTitle = room.id === "standard" ? t.roomCategoryStandard : t.roomCategoryApartment;
   const roomTagline = room.id === "standard" ? t.roomTaglineStandard : t.roomTaglineApartment;
@@ -42,6 +44,21 @@ export default function RoomTag({ room }) {
             <dd>{formatAr(room.pricing.nightWithBreakfast2p)}</dd>
           </div>
         </dl>
+          <div className="room-tag-actions">
+            <button
+              type="button"
+              className="room-tag-cta"
+              aria-label={t.bookButton}
+              data-room={room.id}
+              onClick={() =>
+                navigate("/contact", {
+                  state: { roomId: room.id, roomTitle: roomTitle },
+                })
+              }
+            >
+              {t.bookButton}
+            </button>
+          </div>
       </div>
     </article>
   );

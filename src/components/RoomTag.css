@@ -106,6 +106,35 @@
   white-space: nowrap;
 }
 
+.room-tag-actions {
+  margin-top: 1rem;
+}
+
+.room-tag-cta {
+  background: var(--gold);
+  color: var(--panel-ink);
+  border: none;
+  padding: 0.6rem 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.08s ease;
+}
+
+.room-tag-cta:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 720px) {
+  .room-tag-cta {
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+  }
+}
+
 /* Empile l'image au-dessus du contenu sur mobile */
 @media (max-width: 720px) {
   .room-tag {
