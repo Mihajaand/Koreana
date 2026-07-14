@@ -116,16 +116,14 @@
   padding: 0.35rem 0 1rem;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  scrollbar-width: thin;
+
+  /* Masquer la scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Edge legacy / IE */
 }
 
 .restaurant-gallery-carousel::-webkit-scrollbar {
-  height: 10px;
-}
-
-.restaurant-gallery-carousel::-webkit-scrollbar-thumb {
-  background: rgba(33, 40, 31, 0.25);
-  border-radius: 999px;
+  display: none; /* Chrome, Safari, Edge Chromium */
 }
 
 .gallery-card {
