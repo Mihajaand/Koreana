@@ -31,6 +31,14 @@ export const translations = {
     restaurantSectionLead:
       "Un espace gourmand pensé pour prolonger votre séjour avec une ambiance conviviale, des saveurs généreuses et une présentation visuelle inspirée de la culture coréenne.",
     restaurantExplore: "Découvrir le restaurant",
+    hotelHeroEyebrow: "Hôtel • Koreana",
+    hotelHeroTitle: "Profitez d'un confort exceptionnel à Koreana Hotel.",
+    hotelHeroLead:
+      "Découvrez des chambres modernes, climatisées et soigneusement aménagées pour rendre votre séjour agréable. Wi-Fi gratuit, coffre-fort et restaurant sur place.",
+    hotelHeroPillComfort: "Confort",
+    hotelHeroPillWifi: "Wi-Fi gratuit",
+    hotelHeroPillRestaurant: "Restaurant",
+    hotelFallbackAlt: "Façade de l'hôtel Koreana",
     hotelSectionEyebrow: "Hôtel",
     hotelSectionTitle: "Chambres & tarifs",
     hotelSectionLead:
@@ -130,6 +138,14 @@ export const translations = {
     restaurantSectionLead:
       "A generous dining space designed to extend your stay with a friendly atmosphere, bold flavors, and a visual presentation inspired by Korean culture.",
     restaurantExplore: "Discover the restaurant",
+    hotelHeroEyebrow: "Hotel • Koreana",
+    hotelHeroTitle: "Enjoy exceptional comfort at Koreana Hotel.",
+    hotelHeroLead:
+      "Discover modern, air-conditioned rooms carefully arranged to make your stay enjoyable. Free Wi-Fi, a safe and a restaurant on site.",
+    hotelHeroPillComfort: "Comfort",
+    hotelHeroPillWifi: "Free Wi-Fi",
+    hotelHeroPillRestaurant: "Restaurant",
+    hotelFallbackAlt: "Koreana hotel facade",
     hotelSectionEyebrow: "Hotel",
     hotelSectionTitle: "Rooms & rates",
     hotelSectionLead:
@@ -229,6 +245,14 @@ export const translations = {
     restaurantSectionLead:
       "친근한 분위기, 풍부한 맛, 한국 문화를 영감으로 한 시각적 프레젠테이션을 갖춘 여유로운 식사 공간입니다.",
     restaurantExplore: "레스토랑 둘러보기",
+    hotelHeroEyebrow: "호텔 • 코레아나",
+    hotelHeroTitle: "코레아나 호텔에서 특별한 편안함을 누리세요.",
+    hotelHeroLead:
+      "편안한 숙박을 위해 세심하게 꾸며진 현대적이고 에어컨이 설치된 객실을 만나보세요. 무료 와이파이, 안전 보관함, 현장 레스토랑이 함께합니다.",
+    hotelHeroPillComfort: "편안함",
+    hotelHeroPillWifi: "무료 와이파이",
+    hotelHeroPillRestaurant: "레스토랑",
+    hotelFallbackAlt: "코레아나 호텔 전경",
     hotelSectionEyebrow: "호텔",
     hotelSectionTitle: "객실 & 요금",
     hotelSectionLead:

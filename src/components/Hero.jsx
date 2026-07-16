@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { hotel } from "../data/hotelData";
 import { useLanguage } from "../context/LanguageContext";
-import hommies from "../assets/hommies.png";
+import cbreFamille from "../assets/cbre-famille.png";
 import "./Hero.css";
 
 export default function Hero() {
@@ -25,7 +25,7 @@ export default function Hero() {
         </div>
 
         <div className="hero-media">
-          <img src={hommies} alt="Ambiance et gastronomie Koreana" />
+          <img src={cbreFamille} alt="Ambiance et gastronomie Koreana" />
         </div>
       </div>
     </section>
