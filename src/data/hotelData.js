@@ -1,7 +1,17 @@
 // Données de l'hôtel — centralisées ici pour être faciles à modifier
 // (extraites du document hotel_chambre.docx)
-import cbreStd from "../assets/cbre-std.png";
-import cbreFamille from "../assets/cbre-famille.png";
+import standard1 from "../assets/hotel/standard/chambre-standard-1.jpg";
+import standard2 from "../assets/hotel/standard/chambre-standard-2.jpg";
+import standard3 from "../assets/hotel/standard/chambre-standard-3.jpg";
+import standard4 from "../assets/hotel/standard/chambre-standard-4.jpg";
+import standard5 from "../assets/hotel/standard/chambre-standard-5.jpg";
+import appartement1 from "../assets/hotel/appartement/chambre-appart-1.jpg";
+import appartement2 from "../assets/hotel/appartement/chambre-appart-2.jpg";
+import appartement3 from "../assets/hotel/appartement/chambre-appart-3.jpg";
+import appartement4 from "../assets/hotel/appartement/chambre-appart-4.jpg";
+import appartement5 from "../assets/hotel/appartement/chambre-appart-5.jpg";
+import appartement6 from "../assets/hotel/appartement/chambre-appart-6.jpg";
+import appartement7 from "../assets/hotel/appartement/chambre-appart-7.jpg";
 
 export const hotel = {
   name: "Koreana",
@@ -30,7 +40,8 @@ export const roomCategories = [
   {
     id: "standard",
     name: "Standard",
-    img: cbreStd,
+    img: standard1,
+    gallery: [standard1, standard2, standard3, standard4, standard5],
     rooms: 9,
     tagline: "L'essentiel, confortable et bien pensé",
     description:
@@ -44,7 +55,8 @@ export const roomCategories = [
   {
     id: "appartement",
     name: "Appartement",
-    img: cbreFamille,
+    img: appartement1,
+    gallery: [appartement1, appartement2, appartement3, appartement4, appartement5, appartement6, appartement7],
     rooms: 8,
     tagline: "Plus d'espace pour plus de liberté",
     description:

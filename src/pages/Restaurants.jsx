@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
-import restoHero from "../assets/Restaurants/resto-hero.jpg";
+import restoHero from "../assets/restaurant/restau-1.jpg";
 import menu1 from "../assets/Restaurants/1.jpg";
 import menu2 from "../assets/Restaurants/2.jpg";
 import menu3 from "../assets/Restaurants/3.jpg";

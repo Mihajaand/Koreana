@@ -1,7 +1,7 @@
 import RoomTag from "../components/RoomTag";
 import { useLanguage } from "../context/LanguageContext";
 import { roomCategories, services } from "../data/hotelData";
-import cbreStd from "../assets/cbre-std.png";
+import chambreStandard1 from "../assets/hotel/standard/chambre-standard-1.jpg";
 import "./Hotels.css";
 
 export default function Hotels() {
@@ -10,7 +10,7 @@ export default function Hotels() {
   return (
     <section className="chambres-page">
       <div className="hotel-hero">
-        <img className="hotel-hero-image" src={cbreStd} alt={t.hotelFallbackAlt} />
+        <img className="hotel-hero-image" src={chambreStandard1} alt={t.hotelFallbackAlt} />
 
         <div className="hotel-hero-overlay container">
           <p className="eyebrow">{t.hotelHeroEyebrow}</p>

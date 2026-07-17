@@ -67,7 +67,7 @@
   );
   opacity: 0;
   transition: opacity 0.35s ease;
-  z-index: 1;
+  z-index: 2;
 }
 
 .galerie-card img {
@@ -75,10 +75,25 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  position: relative;
+  z-index: 1;
 }
 
-.galerie-card:hover img {
+/* Effet blur-up : l'image démarre floue + zoomée, se révèle nette */
+.galerie-card img.is-loading {
+  opacity: 0;
+  filter: blur(16px);
+  transform: scale(1.12);
+}
+
+.galerie-card img.is-loaded {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+  transition: opacity 0.5s ease, filter 0.6s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.galerie-card:hover img.is-loaded {
   transform: scale(1.08);
 }
 
@@ -89,6 +104,47 @@
 .galerie-card:focus-visible {
   outline: 2px solid #b08d57;
   outline-offset: 3px;
+}
+
+/* ==========================================================================
+   Skeleton loading — shimmer bien visible
+   ========================================================================== */
+
+.galerie-skeleton {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: #e4e4e4;
+  transition: opacity 0.4s ease 0.05s;
+}
+
+.galerie-skeleton.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.galerie-skeleton-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    100deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.75) 45%,
+    rgba(176, 141, 87, 0.25) 55%,
+    transparent 80%
+  );
+  background-size: 250% 100%;
+  animation: galerie-shimmer 1.3s ease-in-out infinite;
+}
+
+@keyframes galerie-shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
 }
 
 /* ==========================================================================
@@ -148,6 +204,45 @@
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
 }
 
+.galerie-modal-shell img.is-loading {
+  opacity: 0;
+  filter: blur(20px);
+  transform: scale(1.05);
+}
+
+.galerie-modal-shell img.is-loaded {
+  opacity: 1;
+  filter: blur(0);
+  transform: scale(1);
+  transition: opacity 0.5s ease, filter 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Skeleton / spinner du modal */
+
+.galerie-modal-skeleton {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.galerie-spinner {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.15);
+  border-top-color: #b08d57;
+  animation: galerie-spin 0.8s linear infinite;
+}
+
+@keyframes galerie-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 /* Bouton fermer */
 .galerie-close {
   position: absolute;
@@ -191,7 +286,7 @@
   justify-content: center;
   cursor: pointer;
   transition: background 0.25s ease, transform 0.25s ease;
-  z-index: 2;
+  z-index: 3;
 }
 
 .galerie-nav:hover {
