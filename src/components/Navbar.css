@@ -236,3 +236,8 @@
     justify-content: center;
   }
 }
+.nav-flag-icon {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 2px;
+}

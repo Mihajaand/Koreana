@@ -1,8 +1,7 @@
-// Génère l'emoji drapeau à partir du code ISO (ex: "MG" -> 🇲🇬)
-export const getFlagEmoji = (countryCode) =>
-  countryCode
-    .toUpperCase()
-    .replace(/./g, (char) => String.fromCodePoint(127397 + char.charCodeAt()));
+// Génère l'URL du drapeau en ligne via FlagCDN (https://flagcdn.com)
+// w40 = largeur 40px (tu peux mettre w20, w80, w160... selon la taille voulue)
+export const getFlagUrl = (countryCode) =>
+  `https://flagcdn.com/w40/${countryCode.toLowerCase()}.png`;
 
 // Les 10 premiers pays affichés en priorité dans la liste
 const topCountries = [
@@ -51,5 +50,5 @@ const otherCountries = [
 
 export const countries = [...topCountries, ...otherCountries].map((c) => ({
   ...c,
-  flag: getFlagEmoji(c.code),
+  flag: getFlagUrl(c.code),
 }));

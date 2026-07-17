@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { hotel } from "../data/hotelData";
 import { useLanguage } from "../context/LanguageContext";
-import { getFlagEmoji } from "../data/countries";
+import { getFlagUrl } from "../data/countries";
 import logo from "../assets/logo.png";
 import "./Navbar.css";
 
@@ -15,9 +15,9 @@ const links = [
 ];
 
 const languageOptions = [
-  { code: "fr", label: "FR", flag: getFlagEmoji("FR") },
-  { code: "en", label: "EN", flag: getFlagEmoji("GB") },
-  { code: "ko", label: "KR", flag: getFlagEmoji("KR") },
+  { code: "fr", label: "FR", flag: getFlagUrl("fr") },
+  { code: "en", label: "EN", flag: getFlagUrl("gb") },
+  { code: "ko", label: "KR", flag: getFlagUrl("kr") },
 ];
 
 export default function Navbar() {
@@ -85,7 +85,13 @@ export default function Navbar() {
               aria-label={t.navLanguageSwitcher}
               onClick={() => setLangOpen((v) => !v)}
             >
-              {currentLang.label} {currentLang.flag}
+              {currentLang.label}{" "}
+              <img
+                src={currentLang.flag}
+                alt={currentLang.label}
+                width="20"
+                className="nav-flag-icon"
+              />
               <span className={`nav-language-arrow ${langOpen ? "is-open" : ""}`} />
             </button>
 
@@ -97,7 +103,13 @@ export default function Navbar() {
                     className={language === option.code ? "is-active" : ""}
                     onClick={() => handleSelectLanguage(option.code)}
                   >
-                    {option.label} {option.flag}
+                    {option.label}{" "}
+                    <img
+                      src={option.flag}
+                      alt={option.label}
+                      width="20"
+                      className="nav-flag-icon"
+                    />
                   </button>
                 </li>
               ))}

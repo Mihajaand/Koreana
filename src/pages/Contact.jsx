@@ -19,16 +19,28 @@ export default function Contact() {
   const [dateDepart, setDateDepart] = useState("");
   const [numero, setNumero] = useState("");
 
-  // --- Dropdown personnalisé pour l'indicatif téléphonique ---
   const defaultCountry = countries.find((c) => c.code === "MG");
+
+  // --- Dropdown personnalisé : indicatif téléphonique ---
   const [selectedCountry, setSelectedCountry] = useState(defaultCountry);
   const [phoneOpen, setPhoneOpen] = useState(false);
   const phoneWrapperRef = useRef(null);
+
+  // --- Dropdown personnalisé : nationalité (avec drapeau image) ---
+  const [selectedNationality, setSelectedNationality] = useState(defaultCountry);
+  const [nationalityOpen, setNationalityOpen] = useState(false);
+  const nationalityWrapperRef = useRef(null);
 
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (phoneWrapperRef.current && !phoneWrapperRef.current.contains(e.target)) {
         setPhoneOpen(false);
+      }
+      if (
+        nationalityWrapperRef.current &&
+        !nationalityWrapperRef.current.contains(e.target)
+      ) {
+        setNationalityOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -71,6 +83,7 @@ export default function Contact() {
         setDateDepart("");
         setNumero("");
         setSelectedCountry(defaultCountry);
+        setSelectedNationality(defaultCountry);
       })
       .catch((error) => {
         console.error(error);
@@ -126,16 +139,47 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Nationalité */}
+          {/* Nationalité — dropdown personnalisé avec drapeau image */}
           <div className="form-group">
-            <label htmlFor="nationalite">{t.contactNationality}</label>
-            <select id="nationalite" name="nationalite" defaultValue={`${defaultCountry.name} ${defaultCountry.flag}`} required>
-              {countries.map((c) => (
-                <option key={c.code} value={`${c.name} ${c.flag}`}>
-                  {c.flag} {c.name}
-                </option>
-              ))}
-            </select>
+            <label htmlFor="nationalite-trigger">{t.contactNationality}</label>
+            <div className="custom-select-wrapper" ref={nationalityWrapperRef}>
+              <button
+                id="nationalite-trigger"
+                type="button"
+                className="custom-select-trigger"
+                onClick={() => setNationalityOpen((o) => !o)}
+              >
+                <span className="custom-select-current">
+                  <img
+                    src={selectedNationality.flag}
+                    alt={selectedNationality.code}
+                    width="20"
+                    className="flag-icon"
+                  />
+                  {selectedNationality.name}
+                </span>
+                <span className="custom-select-arrow">▾</span>
+              </button>
+
+              {nationalityOpen && (
+                <ul className="custom-select-list">
+                  {countries.map((c) => (
+                    <li
+                      key={c.code}
+                      className={c.code === selectedNationality.code ? "active" : ""}
+                      onClick={() => {
+                        setSelectedNationality(c);
+                        setNationalityOpen(false);
+                      }}
+                    >
+                      <img src={c.flag} alt={c.code} width="20" className="flag-icon" />
+                      <span>{c.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <input type="hidden" name="nationalite" value={selectedNationality.name} required />
           </div>
 
           {/* Dates + nuitées */}
@@ -181,22 +225,25 @@ export default function Contact() {
             <input id="email" name="email" type="email" placeholder={t.contactEmailPlaceholder} required />
           </div>
 
-          {/* Téléphone avec dropdown personnalisé (nom du pays visible seulement dans la liste) */}
+          {/* Téléphone : indicatif (+261) puis code pays (MG) à droite, pas de drapeau */}
           <div className="form-group">
             <label htmlFor="numero">{t.contactPhone}</label>
             <div className="phone-row">
-              <div className="phone-select-wrapper" ref={phoneWrapperRef}>
+              <div className="custom-select-wrapper phone-select-wrapper" ref={phoneWrapperRef}>
                 <button
                   type="button"
-                  className="phone-select-trigger"
+                  className="custom-select-trigger"
                   onClick={() => setPhoneOpen((o) => !o)}
                 >
-                  {selectedCountry.dial} {selectedCountry.flag}
-                  <span className="phone-select-arrow">▾</span>
+                  <span className="custom-select-current">
+                    {selectedCountry.dial}{" "}
+                    <span className="phone-country-code">{selectedCountry.code}</span>
+                  </span>
+                  <span className="custom-select-arrow">▾</span>
                 </button>
 
                 {phoneOpen && (
-                  <ul className="phone-select-list">
+                  <ul className="custom-select-list">
                     {countries.map((c) => (
                       <li
                         key={c.code}
@@ -207,7 +254,9 @@ export default function Contact() {
                         }}
                       >
                         <span>{c.name}</span>
-                        <span className="phone-select-dial">{c.dial} {c.flag}</span>
+                        <span className="phone-select-dial">
+                          {c.dial} <span className="phone-country-code">{c.code}</span>
+                        </span>
                       </li>
                     ))}
                   </ul>
@@ -227,7 +276,7 @@ export default function Contact() {
             <input
               type="hidden"
               name="telephone"
-              value={`${selectedCountry.dial} ${selectedCountry.flag} ${numero}`}
+              value={`${selectedCountry.dial} ${selectedCountry.code} ${numero}`}
             />
           </div>
 

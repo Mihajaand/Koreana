@@ -135,22 +135,12 @@
   text-align: center;
 }
 
-/* --- Téléphone --- */
-.phone-row {
-  display: flex;
-  gap: .8rem;
-}
-
-.phone-input {
-  flex: 1;
-}
-
-.phone-select-wrapper {
+/* --- Dropdown générique (nationalité + téléphone) --- */
+.custom-select-wrapper {
   position: relative;
-  flex: 0 0 130px;
 }
 
-.phone-select-trigger {
+.custom-select-trigger {
   width: 100%;
   height: 100%;
   padding: 1rem;
@@ -167,23 +157,30 @@
   transition: .25s;
 }
 
-.phone-select-trigger:hover,
-.phone-select-trigger:focus {
+.custom-select-trigger:hover,
+.custom-select-trigger:focus {
   border-color: var(--gold);
   outline: none;
 }
 
-.phone-select-arrow {
+.custom-select-current {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.custom-select-arrow {
   color: var(--gold);
   font-size: .8rem;
 }
 
-.phone-select-list {
+.custom-select-list {
   position: absolute;
   top: calc(100% + 6px);
   left: 0;
   z-index: 20;
-  width: 240px;
+  width: 100%;
+  min-width: 240px;
   max-height: 260px;
   overflow-y: auto;
   margin: 0;
@@ -195,10 +192,11 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
 }
 
-.phone-select-list li {
+.custom-select-list li {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: .7rem;
   padding: .6rem 1rem;
   font-size: .9rem;
   color: #222;
@@ -206,22 +204,53 @@
   white-space: nowrap;
 }
 
-.phone-select-list li:hover {
+.custom-select-list li:hover {
   background: #f0f4f2;
 }
 
-.phone-select-list li.active {
+.custom-select-list li.active {
   background: #1F3A34;
   color: #fff;
 }
 
+/* --- Spécifique téléphone --- */
+.phone-row {
+  display: flex;
+  gap: .8rem;
+}
+
+.phone-input {
+  flex: 1;
+}
+
+.phone-select-wrapper {
+  flex: 0 0 130px;
+}
+
 .phone-select-dial {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
   color: var(--gold);
   font-weight: bold;
 }
 
-.phone-select-list li.active .phone-select-dial {
+.custom-select-list li.active .phone-select-dial {
   color: #fff;
+}
+
+.phone-country-code {
+  font-size: .78rem;
+  font-family: var(--font-mono);
+  letter-spacing: .03em;
+  opacity: .85;
+}
+
+/* --- Drapeaux (nationalité) --- */
+.flag-icon {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 2px;
 }
 
 .contact-form .btn {
@@ -245,7 +274,7 @@
     flex: 1;
   }
 
-  .phone-select-list {
+  .custom-select-list {
     width: 100%;
   }
 
