@@ -7,11 +7,13 @@ import Hotels from "./pages/Hotels";
 import Restaurants from "./pages/Restaurants";
 import Contact from "./pages/Contact";
 import Galerie from "./pages/Galerie";
+import ScrollToTop from "./components/ScrollToTop";
 
 export default function App() {
   return (
     <LanguageProvider>
       <BrowserRouter>
+      <ScrollToTop />
         <Navbar />
         <main>
           <Routes>
