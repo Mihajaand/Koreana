@@ -1,7 +1,7 @@
 import RoomTag from "../components/RoomTag";
 import { useLanguage } from "../context/LanguageContext";
 import { roomCategories, services } from "../data/hotelData";
-import chambreStandard1 from "../assets/hotel/standard/chambre-standard-1.jpg";
+import chambreStandard1 from "../assets/hotel/standard/chambre-standard-1.jpeg";
 import "./Hotels.css";
 
 export default function Hotels() {

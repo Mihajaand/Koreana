@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { hotel } from "../data/hotelData";
 import { useLanguage } from "../context/LanguageContext";
-import chambreAppart1 from "../assets/hotel/appartement/chambre-appart-1.jpg";
+import chambreAppart1 from "../assets/hotel/appartement/chambre-appart-1.jpeg";
 import "./Hero.css";
 
 export default function Hero() {

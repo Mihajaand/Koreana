@@ -1,17 +1,17 @@
 // Données de l'hôtel — centralisées ici pour être faciles à modifier
 // (extraites du document hotel_chambre.docx)
-import standard1 from "../assets/hotel/standard/chambre-standard-1.jpg";
-import standard2 from "../assets/hotel/standard/chambre-standard-2.jpg";
-import standard3 from "../assets/hotel/standard/chambre-standard-3.jpg";
-import standard4 from "../assets/hotel/standard/chambre-standard-4.jpg";
-import standard5 from "../assets/hotel/standard/chambre-standard-5.jpg";
-import appartement1 from "../assets/hotel/appartement/chambre-appart-1.jpg";
-import appartement2 from "../assets/hotel/appartement/chambre-appart-2.jpg";
-import appartement3 from "../assets/hotel/appartement/chambre-appart-3.jpg";
-import appartement4 from "../assets/hotel/appartement/chambre-appart-4.jpg";
-import appartement5 from "../assets/hotel/appartement/chambre-appart-5.jpg";
-import appartement6 from "../assets/hotel/appartement/chambre-appart-6.jpg";
-import appartement7 from "../assets/hotel/appartement/chambre-appart-7.jpg";
+import standard1 from "../assets/hotel/standard/chambre-standard-1.jpeg";
+import standard2 from "../assets/hotel/standard/chambre-standard-2.jpeg";
+import standard3 from "../assets/hotel/standard/chambre-standard-3.jpeg";
+import standard4 from "../assets/hotel/standard/chambre-standard-4.jpeg";
+import standard5 from "../assets/hotel/standard/chambre-standard-5.jpeg";
+import appartement1 from "../assets/hotel/appartement/chambre-appart-1.jpeg";
+import appartement2 from "../assets/hotel/appartement/chambre-appart-2.jpeg";
+import appartement3 from "../assets/hotel/appartement/chambre-appart-3.jpeg";
+import appartement4 from "../assets/hotel/appartement/chambre-appart-4.jpeg";
+import appartement5 from "../assets/hotel/appartement/chambre-appart-5.jpeg";
+import appartement6 from "../assets/hotel/appartement/chambre-appart-6.jpeg";
+import appartement7 from "../assets/hotel/appartement/chambre-appart-7.jpeg";
 
 export const hotel = {
   name: "Koreana",
