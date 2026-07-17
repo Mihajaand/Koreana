@@ -213,6 +213,20 @@
   color: #fff;
 }
 
+/* --- Spécifique nationalité (champ + liste déroulante compacts) --- */
+.nationality-trigger {
+  padding: 0.7rem 1rem;
+  font-size: 0.9rem;
+}
+
+.nationality-trigger .flag-icon {
+  width: 18px;
+}
+
+.nationality-select-wrapper .custom-select-list {
+  max-width: 300px;
+}
+
 /* --- Spécifique téléphone --- */
 .phone-row {
   display: flex;
@@ -246,7 +260,7 @@
   opacity: .85;
 }
 
-/* --- Drapeaux (nationalité) --- */
+/* --- Drapeaux --- */
 .flag-icon {
   display: inline-block;
   vertical-align: middle;

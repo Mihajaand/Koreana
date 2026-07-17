@@ -139,21 +139,24 @@ export default function Contact() {
             </div>
           </div>
 
-          {/* Nationalité — dropdown personnalisé avec drapeau image */}
+          {/* Nationalité — dropdown personnalisé avec drapeau image, largeur réduite */}
           <div className="form-group">
             <label htmlFor="nationalite-trigger">{t.contactNationality}</label>
-            <div className="custom-select-wrapper" ref={nationalityWrapperRef}>
+            <div
+              className="custom-select-wrapper nationality-select-wrapper"
+              ref={nationalityWrapperRef}
+            >
               <button
                 id="nationalite-trigger"
                 type="button"
-                className="custom-select-trigger"
+                className="custom-select-trigger nationality-trigger"
                 onClick={() => setNationalityOpen((o) => !o)}
               >
                 <span className="custom-select-current">
                   <img
                     src={selectedNationality.flag}
                     alt={selectedNationality.code}
-                    width="20"
+                    width="18"
                     className="flag-icon"
                   />
                   {selectedNationality.name}
@@ -172,7 +175,7 @@ export default function Contact() {
                         setNationalityOpen(false);
                       }}
                     >
-                      <img src={c.flag} alt={c.code} width="20" className="flag-icon" />
+                      <img src={c.flag} alt={c.code} width="18" className="flag-icon" />
                       <span>{c.name}</span>
                     </li>
                   ))}

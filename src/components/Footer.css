@@ -50,6 +50,18 @@
   color: var(--gold);
 }
 
+.footer-phone {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.flag-icon {
+  display: inline-block;
+  vertical-align: middle;
+  border-radius: 2px;
+}
+
 .footer-note {
   width: 100%;
   border-top: 1px solid rgba(244, 239, 224, 0.15);
