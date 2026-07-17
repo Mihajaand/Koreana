@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { hotel } from "../data/hotelData";
 import { useLanguage } from "../context/LanguageContext";
+import { getFlagEmoji } from "../data/countries";
 import logo from "../assets/logo.png";
 import "./Navbar.css";
 
@@ -14,9 +15,9 @@ const links = [
 ];
 
 const languageOptions = [
-  { code: "fr", label: "FR" },
-  { code: "en", label: "EN" },
-  { code: "ko", label: "KR" },
+  { code: "fr", label: "FR", flag: getFlagEmoji("FR") },
+  { code: "en", label: "EN", flag: getFlagEmoji("GB") },
+  { code: "ko", label: "KR", flag: getFlagEmoji("KR") },
 ];
 
 export default function Navbar() {
@@ -84,7 +85,7 @@ export default function Navbar() {
               aria-label={t.navLanguageSwitcher}
               onClick={() => setLangOpen((v) => !v)}
             >
-              {currentLang.label}
+              {currentLang.label} {currentLang.flag}
               <span className={`nav-language-arrow ${langOpen ? "is-open" : ""}`} />
             </button>
 
@@ -96,7 +97,7 @@ export default function Navbar() {
                     className={language === option.code ? "is-active" : ""}
                     onClick={() => handleSelectLanguage(option.code)}
                   >
-                    {option.label}
+                    {option.label} {option.flag}
                   </button>
                 </li>
               ))}

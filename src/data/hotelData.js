@@ -16,7 +16,7 @@ import appartement7 from "../assets/hotel/appartement/chambre-appart-7.jpg";
 export const hotel = {
   name: "Koreana",
   baseline: "Hôtel — Talatamaty, Antananarivo",
-  address: "Lot 131G Amboropotsy, Talatamaty, Antananarivo",
+  address: "Lot 131G Amboropotsy, Talatamaty (Ivato), Antananarivo",
   phone: "+261 34 40 477 77",
   phoneHref: "tel:+261344047777",
   email: "koreana131@gmail.com",

@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import Hero from "../components/Hero";
 import ServicesStrip from "../components/ServicesStrip";
@@ -25,7 +25,29 @@ const menuGallery = [menu1, menu2, menu3, menu4, menu5, menu6, menu7, menu8, men
 
 export default function Home() {
   const miniCarouselRef = useRef(null);
+  const [activeIndex, setActiveIndex] = useState(null);
   const { t } = useLanguage();
+
+  useEffect(() => {
+    if (activeIndex === null) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setActiveIndex(null);
+      }
+
+      if (event.key === "ArrowRight") {
+        setActiveIndex((current) => (current + 1) % menuGallery.length);
+      }
+
+      if (event.key === "ArrowLeft") {
+        setActiveIndex((current) => (current - 1 + menuGallery.length) % menuGallery.length);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [activeIndex]);
 
   const scrollMenuCarousel = (direction) => {
     const carousel = miniCarouselRef.current;
@@ -39,6 +61,14 @@ export default function Home() {
       left: direction * (cardWidth + gap),
       behavior: "smooth",
     });
+  };
+
+  const goToNext = () => {
+    setActiveIndex((current) => (current + 1) % menuGallery.length);
+  };
+
+  const goToPrevious = () => {
+    setActiveIndex((current) => (current - 1 + menuGallery.length) % menuGallery.length);
   };
 
   return (
@@ -108,6 +138,7 @@ export default function Home() {
                   type="button"
                   className="restaurant-home-menu-card"
                   key={`${item}-${index}`}
+                  onClick={() => setActiveIndex(index)}
                   aria-label={`${t.menuItem} ${index + 1}`}
                 >
                   <img src={item} alt={`${t.menuItem} ${index + 1}`} loading="lazy" />
@@ -160,6 +191,26 @@ export default function Home() {
           </a>
         </div>
       </section>
+
+      {activeIndex !== null && (
+        <div className="gallery-modal" role="dialog" aria-modal="true" onClick={() => setActiveIndex(null)}>
+          <div className="gallery-modal-shell" onClick={(event) => event.stopPropagation()}>
+            <button type="button" className="gallery-close" onClick={() => setActiveIndex(null)} aria-label={t.galleryClose}>
+              ×
+            </button>
+
+            <button type="button" className="gallery-nav gallery-nav-prev" onClick={goToPrevious} aria-label={t.galleryPrevious}>
+              ‹
+            </button>
+
+            <img src={menuGallery[activeIndex]} alt={`${t.menuItem} ${activeIndex + 1}`} />
+
+            <button type="button" className="gallery-nav gallery-nav-next" onClick={goToNext} aria-label={t.galleryNext}>
+              ›
+            </button>
+          </div>
+        </div>
+      )}
     </>
   );
 }

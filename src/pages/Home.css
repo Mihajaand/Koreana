@@ -98,18 +98,16 @@
   overflow-x: auto;
   padding: 0.35rem 0 0.85rem;
   scroll-snap-type: x mandatory;
-  scrollbar-width: thin;
+  scroll-behavior: smooth;
+
+  /* Masquer la scrollbar */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Edge legacy / IE */
 }
 
 .restaurant-home-carousel::-webkit-scrollbar {
-  height: 9px;
+  display: none; /* Chrome, Safari, Edge Chromium */
 }
-
-.restaurant-home-carousel::-webkit-scrollbar-thumb {
-  background: rgba(33, 40, 31, 0.25);
-  border-radius: 999px;
-}
-
 .restaurant-home-menu-card {
   min-width: 0;
   border: 1px solid rgba(33, 40, 31, 0.12);
@@ -168,4 +166,76 @@
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+}
+.gallery-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background: rgba(11, 14, 10, 0.88);
+  backdrop-filter: blur(8px);
+}
+
+.gallery-modal-shell {
+  position: relative;
+  width: min(100%, 1100px);
+  max-height: 94vh;
+  display: grid;
+  place-items: center;
+}
+
+.gallery-modal-shell img {
+  width: 100%;
+  max-height: 94vh;
+  object-fit: contain;
+  border-radius: 20px;
+  background: #111;
+  box-shadow: 0 24px 90px rgba(0, 0, 0, 0.45);
+}
+
+.gallery-close,
+.gallery-nav {
+  position: absolute;
+  z-index: 1;
+  border: none;
+  cursor: pointer;
+  color: #f8f5ee;
+  background: rgba(16, 19, 14, 0.72);
+  backdrop-filter: blur(6px);
+}
+
+.gallery-close {
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 999px;
+  font-size: 1.7rem;
+}
+
+.gallery-nav {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3.4rem;
+  height: 3.4rem;
+  border-radius: 999px;
+  font-size: 2rem;
+}
+
+.gallery-nav-prev {
+  left: 0.8rem;
+}
+
+.gallery-nav-next {
+  right: 0.8rem;
+}
+
+@media (max-width: 720px) {
+  .gallery-nav {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.7rem;
+  }
 }

@@ -3,10 +3,13 @@ import { useLanguage } from "../context/LanguageContext";
 import "./Footer.css";
 import { FaFacebookF } from "react-icons/fa6";
 import logo from "../assets/logo.png";
+import { countries } from "../data/countries";
+
 
 export default function Footer() {
   const { t } = useLanguage();
-
+    const countryFlag = countries.find((c) => c.code === "MG");
+  
   return (
     <footer className="footer">
       <div className="container footer-inner">
@@ -18,7 +21,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="footer-contact">
-          <a href={hotel.phoneHref}>{hotel.phone}</a>
+          <a href={hotel.phoneHref}>{countryFlag.flag}&nbsp;{hotel.phone}</a>
           <a href={`mailto:${hotel.email}`}>{hotel.email}</a>
           <a href={hotel.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="footer-social">
             <FaFacebookF />
