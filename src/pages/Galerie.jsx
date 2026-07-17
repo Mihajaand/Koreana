@@ -11,9 +11,9 @@ import gal8 from "../assets/galerie/8.jpg";
 import gal9 from "../assets/galerie/9.jpg";
 import gal10 from "../assets/galerie/10.jpg";
 import gal11 from "../assets/galerie/11.jpg";
-import gal12 from "../assets/galerie/12.jpg";
+// import gal12 from "../assets/galerie/12.jpg";
 import gal13 from "../assets/galerie/13.jpg";
-import gal14 from "../assets/galerie/14.jpg";
+// import gal14 from "../assets/galerie/14.jpg";
 import gal15 from "../assets/galerie/15.jpg";
 import gal16 from "../assets/galerie/16.png";
 import gal17 from "../assets/galerie/17.png";
@@ -49,7 +49,11 @@ import facade4 from "../assets/ext-int/facade-4.jpg";
 import facade5 from "../assets/ext-int/facade-5.jpg";
 import "./Galerie.css";
 
-const legacyGalleryImages = [gal1, gal2, gal3, gal4, gal5, gal6, gal7, gal8, gal9, gal10, gal11, gal12, gal13, gal14, gal15, gal16, gal17, gal18, gal19, gal20];
+// Généré par `npm run generate:lqip` — tableau de data-URLs minuscules,
+// dans le même ordre que galerieImages ci-dessous.
+import lqipPlaceholders from "../assets/galerie-lqip.json";
+
+const legacyGalleryImages = [gal1, gal2, gal3, gal4, gal5, gal6, gal7, gal8, gal9, gal10, gal11, gal13, gal15, gal16, gal17, gal18, gal19, gal20];
 const newGalleryImages = [standard1, standard2, standard3, standard4, standard5, appartement1, appartement2, appartement3, appartement4, appartement5, appartement6, appartement7, restau1, restau2, restau3, restau4, restau5, restau6, restau7, restau8, restau9, restau10, facade1, facade2, facade3, facade4, facade5];
 const galerieImages = [...legacyGalleryImages, ...newGalleryImages];
 
@@ -153,9 +157,12 @@ export default function Galerie() {
         image,
         index,
         shouldPreload: loadedIndices.has(index),
+        lqip: lqipPlaceholders[index] || null,
       })),
     [loadedIndices]
   );
+
+  const activeLqip = activeIndex !== null ? lqipPlaceholders[activeIndex] || null : null;
 
   return (
     <section className="galerie-page">
@@ -165,7 +172,7 @@ export default function Galerie() {
       </div>
 
       <div className="galerie-bento-grid">
-        {galleryItems.map(({ image, index, shouldPreload }) => {
+        {galleryItems.map(({ image, index, shouldPreload, lqip }) => {
           const isLoaded = loadedImages.has(index);
           return (
             <button
@@ -179,7 +186,8 @@ export default function Galerie() {
                 cardRefs.current[index] = element;
               }}
             >
-              <div className={`galerie-skeleton ${isLoaded ? "is-hidden" : ""}`}>
+              <div className={`galerie-skeleton ${isLoaded ? "is-hidden" : ""} ${lqip ? "has-lqip" : ""}`}>
+                {lqip && <img src={lqip} alt="" aria-hidden="true" className="galerie-lqip" />}
                 <div className="galerie-skeleton-shine" />
               </div>
               {shouldPreload && (
@@ -210,6 +218,7 @@ export default function Galerie() {
 
             {!modalLoaded && (
               <div className="galerie-modal-skeleton">
+                {activeLqip && <img src={activeLqip} alt="" aria-hidden="true" className="galerie-modal-lqip" />}
                 <div className="galerie-spinner" />
               </div>
             )}

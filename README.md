@@ -286,3 +286,4 @@ Si vous avez besoin d’aide pour un changement simple, contactez la personne qu
 
 Vous n’avez pas besoin de savoir coder pour modifier la majorité du contenu du site : il suffit d’ouvrir les bons fichiers et de remplacer le texte ou les images.
 
+npm run generate:lqip
